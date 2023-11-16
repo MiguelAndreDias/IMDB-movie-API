@@ -1,10 +1,10 @@
 # IMDB-movie-API
 
-This API is built using Python and Flask, and it utilizes a MongoDB database to store IMDb movie data. The API provides three main endpoints: GET MOVIES, GET MOVIES/ID, and POST MOVIES.
+This API was built using Python and Flask, and it utilizes a MongoDB database to store IMDb movie data taken from https://datasets.imdbws.com/. The API provides three main endpoints: GET movies, GET movies/{id}, and POST movies.
 
 ## Endpoints
 ### 1. GET MOVIES
-Retrieve a list of movies from the database. This endpoint supports sorting and filtering options.
+Retrieves a list of movies from the database. This endpoint supports sorting and filtering options.
 
 #### Parameters:
 
@@ -36,7 +36,7 @@ Retrieves the second page of movies with the "Dragon ball" title name in descend
 
 
 ### 2. GET MOVIES/{id}
-Retrieve information about a specific movie using its tconst value.
+Retrieves information about a specific movie using its tconst value.
 
 #### Parameters:
 - id: The tconst value of the movie.
@@ -80,24 +80,14 @@ Request Body:
 }
  ```
 
-Getting Started
+## Usage
+
 Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-username/movie-database-api.git
-cd movie-database-api
-Install dependencies:
-bash
-Copy code
-pip install -r requirements.txt
-Set up MongoDB:
 
-Create a MongoDB database and update the connection details in config.py.
-Run the application:
-
-bash
-Copy code
-python app.py
+```bash
+   git clone https://github.com/MiguelAndreDias/IMDB-movie-API.git
+   cd IMDB-movie-API
+```
 The API will be accessible at http://localhost:5000.
 
 Contributing
