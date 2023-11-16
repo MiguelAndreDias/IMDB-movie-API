@@ -47,7 +47,7 @@ def build_filter_query():
 @app.route('/movies', methods=['GET', 'POST'])
 def get_movies():
     """
-    file: colors.yml
+    file: imdb.yml
     """
     if request.method == "GET":
         # Extract query parameters
