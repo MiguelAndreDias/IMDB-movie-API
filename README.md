@@ -2,11 +2,11 @@
 
 This API is built using Python and Flask, and it utilizes a MongoDB database to store IMDb movie data. The API provides three main endpoints: GET MOVIES, GET MOVIES/ID, and POST MOVIES.
 
-##Endpoints
-###1. GET MOVIES
+## Endpoints
+### 1. GET MOVIES
 Retrieve a list of movies from the database. This endpoint supports sorting and filtering options.
 
-####Parameters:
+#### Parameters:
 rating_asc: Sort movies by ascending rating.
 rating_desc: Sort movies by descending rating.
 minRating: Filter movies by minimum rating.
@@ -19,7 +19,7 @@ Example Usage:
 
    ```bash
    GET /movies?rating_asc=true&genres=action&minRating=7.5&startYear=2000&titleName=example
-
+   ```
 
 2. GET MOVIES/{id}
 Retrieve information about a specific movie using its tconst value.
