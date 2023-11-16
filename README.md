@@ -7,13 +7,14 @@ This API is built using Python and Flask, and it utilizes a MongoDB database to 
 Retrieve a list of movies from the database. This endpoint supports sorting and filtering options.
 
 #### Parameters:
-rating_asc: Sort movies by ascending rating.
-rating_desc: Sort movies by descending rating.
-minRating: Filter movies by minimum rating.
-maxRating: Filter movies by maximum rating.
-genres: Filter movies by specified movie genres.
-startYear: Filter movies released in a specified year.
-titleName: Filter movies by title.
+
+- rating_asc: Sort movies by ascending rating.
+- rating_desc: Sort movies by descending rating.
+- minRating: Filter movies by minimum rating.
+- maxRating: Filter movies by maximum rating.
+- genres: Filter movies by specified movie genres.
+- startYear: Filter movies released in a specified year.
+- titleName: Filter movies by title.
 
 Example Usage:
 
