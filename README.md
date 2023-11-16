@@ -16,38 +16,70 @@ Retrieve a list of movies from the database. This endpoint supports sorting and 
 - startYear: Filter movies released in a specified year.
 - titleName: Filter movies by title.
 
-Example Usage:
+#### Pagination
+
+To manage large datasets, this API employs a pagination method, limiting JSON results to 20 per page.
+
+#### Example Usage:
+
+Retrieves action movies released in the year 2000 with a minimum rating of 7.5, sorted in ascending order based on their ratings.
 
    ```bash
-   GET /movies?rating_asc=true&genres=action&minRating=7.5&startYear=2000&titleName=example
+   GET http://127.0.0.1:5000/movies?sortBy=rating_asc&genres=action&minRating=7.5&startYear=2000
    ```
 
-2. GET MOVIES/{id}
+Retrieves the second page of movies with the "Dragon ball" title name in descending order of rating.
+
+```bash
+   GET http://127.0.0.1:5000/movies?sortBy=rating_desc&titleName=Dragon ball&page=2
+```
+
+
+### 2. GET MOVIES/{id}
 Retrieve information about a specific movie using its tconst value.
 
-Parameters:
-id: The tconst value of the movie.
-Example Usage:
-http
-Copy code
-GET /movies/tt1234567
-3. POST MOVIES
+#### Parameters:
+- id: The tconst value of the movie.
+
+#### Example Usage:
+
+ ```bash
+   GET http://127.0.0.1:5000/movies/tt7961060
+   ```
+
+Example JSON response:
+
+ ```bash
+   {
+    "averageRating": 7.7,
+    "genres": "Action,Adventure,Animation",
+    "imdbLink": "https://www.imdb.com/title/tt7961060",
+    "primaryTitle": "Dragon Ball Super: Broly",
+    "runtimeMinutes": 100,
+    "startYear": 2018,
+    "tconst": "tt7961060",
+    "titleType": "movie"
+}
+   ```
+
+
+### 3. POST MOVIES
 Add a new movie to the database.
 
 Request Body:
-json
-Copy code
+ ```bash
 {
-  "tconst": "tt1234567",
-  "title": "Example Movie",
-  "genres": ["Action", "Drama"],
-  "rating": 8.5,
-  "releaseYear": 2022
+    "averageRating": 7.7,
+    "genres": "Comedy, Romance",
+    "imdbLink": "https://www.imdb.com/title/ttxxxxxxx",
+    "primaryTitle": "Example name",
+    "runtimeMinutes": 100,
+    "startYear": 2018,
+    "tconst": "ttxxxxxxx",
+    "titleType": "movie"
 }
-Example Usage:
-http
-Copy code
-POST /movies
+ ```
+
 Getting Started
 Clone the repository:
 bash
