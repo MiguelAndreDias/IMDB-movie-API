@@ -23,7 +23,7 @@ final_movies.drop(columns = ['originalTitle', 'endYear', 'numVotes', 'isAdult'],
 final_movies['imdbLink'] = 'https://www.imdb.com/title/' + final_movies['tconst']
 
 #Saves the modified DF into a new CSV file.
-final_movies.to_csv('moviesonly2.csv', sep='\t', index=False, header=True)
+final_movies.to_csv('moviesonly.csv', sep='\t', index=False, header=True)
 print(final_movies.head(10))
 
 
