@@ -1,0 +1,38 @@
+Post data about a new movie
+---
+parameters:
+  - name: movie_data
+    in: body
+    required: true
+    schema:
+      type: object
+      properties:
+        averageRating:
+          type: number
+          description: Average rating of the movie
+        genres:
+          type: string
+          description: The genres of the movie
+
+        imdbLink:
+          type: string
+          description: The imdb link of the movie
+        primaryTitle:
+          type: string
+          description: The title of the movie
+        runtimeMinutes:
+          type: number
+          description: The runtime of the movie
+        
+        startYear:
+          type: integer
+          description: The release year of the movie
+        tconst:
+          type: string
+          description: The id of the movie
+        
+responses:
+  200:
+    description: Movie added successfully
+  400:
+    description: Bad request, invalid data

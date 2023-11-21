@@ -1,0 +1,66 @@
+Get a list of movies based on specified parameters.
+---
+
+parameters:
+  - name: genres
+    in: query
+    type: string
+    description: Comma-separated list of genres.
+
+  - name: titleName
+    in: query
+    type: string
+    description: Filter by a given title.
+
+  - name: minRating
+    in: query
+    type: number
+    minimum: 0
+    maximum: 10
+    description: Minimum rating for movies.
+  - name: maxRating
+    in: query
+    type: number
+    minimum: 0
+    maximum: 10
+    description: Maximum rating for movies.
+  - name: startYear
+    in: query
+    type: integer
+    description: Start year for movies.
+  - name: page
+    in: query
+    type: integer
+    minimum: 1
+    description: Page number for pagination.
+  
+  - name: sortBy
+    in: query
+    type: string
+    enum: ["rating_asc", "rating_desc"]
+    description: Sort movies by ascending or descending rating.
+
+responses:
+  200:
+    description: A list of movies
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              rating:
+                type: number
+              year:
+                type: integer
+              genres:
+                type: array
+                items:
+                  type: string
+  400:
+    description: Bad request, invalid data

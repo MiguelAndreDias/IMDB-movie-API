@@ -1,0 +1,36 @@
+Get a single movie based on specified code.
+---
+
+parameters:
+  - name: tconst
+    in: path
+    required: true
+    description: Movie identifier (should start with ttxxxxxxx, where x is a number).
+    schema:
+      type: string
+      pattern: '^tt[0-9]+$'
+  
+responses:
+  200:
+    description: Data for the movie retrieved successfully
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              title:
+                type: string
+              rating:
+                type: number
+              year:
+                type: integer
+              genres:
+                type: array
+                items:
+                  type: string
+  400:
+    description: Bad request, invalid data

@@ -3,7 +3,15 @@ from pymongo import MongoClient
 from flasgger import Swagger
 
 app = Flask(__name__)
-swagger = Swagger(app)
+swagger = Swagger(app, template={
+    "swagger": "2.0",
+    "info": {
+        "title": "IMDB API",
+        "description": "This API was built using Python and Flask, and it utilizes a MongoDB database to store IMDb movie data taken from https://datasets.imdbws.com/. The API provides three main endpoints: GET movies, GET movies/{id}, and POST movies.",
+        "version": "1.0"
+    },
+    "schemes": ["http", "https"],
+})
 
 # Connect to your MongoDB
 client = MongoClient('mongodb://localhost:27017')
@@ -15,10 +23,6 @@ def apply_sorting(movies, sort_by):
         return movies.sort('averageRating', 1)
     elif sort_by == 'rating_desc':
         return movies.sort('averageRating', -1)
-    elif sort_by == 'title_asc':
-        return movies.sort('primaryTitle', 1)
-    elif sort_by == 'title_desc':
-        return movies.sort('primaryTitle', -1)
     else:
         return movies
 
@@ -29,6 +33,7 @@ def build_filter_query():
     max_rating = request.args.get('maxRating', default=None, type=float)
     start_year = request.args.get('startYear', default=None, type=int)
     title_name = request.args.get('titleName', default=None, type=str)
+    page = request.args.get('page', default=1, type=int)
 
     if genres:
         filter_query['genres'] = {'$regex': genres, '$options': 'i'}
@@ -44,10 +49,10 @@ def build_filter_query():
     return filter_query
 
 # Define the /movies endpoint
-@app.route('/movies', methods=['GET', 'POST'])
+@app.route('/movies', methods=['GET'])
 def get_movies():
     """
-    file: imdb.yml
+    file: get_movies.yml
     """
     if request.method == "GET":
         # Extract query parameters
@@ -75,17 +80,33 @@ def get_movies():
         else:
             return jsonify({'error': 'List of movies not found'}), 404
 
-    elif request.method == 'POST':
-        # Add a new movie to the database
-        new_movie_data = request.json
-        collection.insert_one(new_movie_data)
-        return jsonify({'message': 'Movie added successfully'}), 201
+    
     else:
         return jsonify({'error': 'List of movies not found'}), 404
+
+
+# Define the /movies endpoint
+@app.route('/movies', methods=['POST'])
+def post_movie():
+    """
+    file: post_movie.yml
+    """
+    # Add a new movie to the database
+    new_movie_data = request.json
+    collection.insert_one(new_movie_data)
+    return jsonify({'message': 'Movie added successfully'}), 201
+
+
+
+
 
 # Define the /movies/{ID} endpoint
 @app.route('/movies/<string:tconst>', methods=['GET'])
 def get_movie(tconst):
+    """
+    file: get_movie.yml
+    """
+  
     movie = collection.find_one({'tconst': tconst, 'titleType': 'movie'}, {'_id': 0})
 
     if movie:
