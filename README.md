@@ -99,5 +99,4 @@ Run the Docker Container:
 
 ## Acessing the application
 
-Open a web browser and go to http://127.0.0.1:3000/apidocs to test the api.
-For the creation of this API the mongoDB was run locally. In order to test the api first setup a mongodb database and change the host in the imdb_api.py line that says "client = MongoClient('mongodb://localhost:27017')"
+To interact with the API, open a web browser and navigate to http://127.0.0.1:3000/apidocs. Please note that for the creation of this API, MongoDB was run locally. To test the API, ensure you have a MongoDB database set up. Modify the host in the imdb_api.py file at the line that reads "client = MongoClient('mongodb://localhost:27017')" to match your MongoDB server configuration.
