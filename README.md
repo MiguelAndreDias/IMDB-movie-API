@@ -84,3 +84,20 @@ Clone the repository:
    git clone https://github.com/MiguelAndreDias/IMDB-movie-API.git
    cd IMDB-movie-API
 ```
+
+Build the Docker Image:
+
+```bash
+   docker build -t migard/imdb-movie-flask .
+```
+
+Run the Docker Container:
+
+```bash
+   docker run -p 3000:3000 migard/imdb-movie-flask:latest
+```
+
+## Acessing the application
+
+Open a web browser and go to http://127.0.0.1:3000/apidocs to test the api.
+For the creation of this API the mongoDB was run locally. In order to test the api first setup a mongodb database and change the host in the imdb_api.py line that says "client = MongoClient('mongodb://localhost:27017')"
