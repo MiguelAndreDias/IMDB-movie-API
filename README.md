@@ -22,13 +22,13 @@ To manage large datasets, this API employs a pagination method, limiting JSON re
 Retrieves action movies released in the year 2000 with a minimum rating of 7.5, sorted in ascending order based on their ratings.
 
    ```bash
-   GET http://127.0.0.1:5000/movies?sortBy=rating_asc&genres=action&minRating=7.5&startYear=2000
+   GET http://127.0.0.1:3000/movies?sortBy=rating_asc&genres=action&minRating=7.5&startYear=2000
    ```
 
 Retrieves the second page of movies with the "Dragon ball" title name in descending order of rating.
 
 ```bash
-   GET http://127.0.0.1:5000/movies?sortBy=rating_desc&titleName=Dragon ball&page=2
+   GET http://127.0.0.1:3000/movies?sortBy=rating_desc&titleName=Dragon ball&page=2
 ```
 
 
